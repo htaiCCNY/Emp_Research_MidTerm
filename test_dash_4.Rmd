@@ -1,0 +1,31 @@
+---
+title: "test_4_dash"
+author: "HT"
+date: "2023-03-18"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    social: menu
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+```
+```{r}
+library(knitr)
+library(ggplot2)
+library(flexdashboard)
+library(dygraphs)
+library(plotly)
+library(leaflet)
+
+library(nycflights13)
+```
+
+```{r}
+dat <- data.frame(Arrival_Delay = flights$arr_delay, Carrier= flights$carrier)
+p <- ggplot(dat, aes(x=Arrival_Delay, y= Carrier)) +
+  geom_point(shape=1)      
+ggplotly(p)
+```
+
